@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Prioridade {
+  BAIXA
+  MEDIA
+  ALTA
+}
+
+enum StatusTarefa {
+  A_FAZER
+  FAZENDO
+  PRONTO
+}
+
+model Usuario {
+  id Int @id @default(autoincrement())
+  nome String
+  email String @unique
+  senhaHash String
+  tarefas Tarefa[]
+}
+
+model Tarefa {
+  id Int @id @default(autoincrement())
+  usuarioId Int
+  descricao String
+  setor String
+  prioridade Prioridade
+  dataCadastro DateTime @default(now())
+  status StatusTarefa @default(A_FAZER)
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  @@index([status])
+  @@index([usuarioId])
+}

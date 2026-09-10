@@ -1,0 +1,41 @@
+{
+  "name": "fluxo-kanban",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch backend/server.js",
+    "start": "tsx backend/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:seed": "prisma db seed"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.15.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "prisma": "^6.15.0",
+    "tsx": "^4.20.3"
+  },
+  "description": "Aplicação Kanban com PostgreSQL, Prisma e pgAdmin.",
+  "main": "backend/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoniokauetesta/prova-pratica-saep.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoniokauetesta/prova-pratica-saep/issues"
+  },
+  "homepage": "https://github.com/antoniokauetesta/prova-pratica-saep#readme"
+}
